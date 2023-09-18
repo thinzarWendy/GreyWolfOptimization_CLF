@@ -5,6 +5,7 @@
 import pandas as pd
 import numpy as np
 import data_preprocessing as pre
+import plot as pt
 
 from sklearn import svm
 from sklearn.metrics import accuracy_score
@@ -25,6 +26,16 @@ class MultiKernelSVM():
 
          self.Y = self.df['Class']
          self.X = self.df.drop(['Class'], axis=1)
+        
+
+    def plotting(self):
+        plotter = pt.Plot()
+        plotter.X = self.X
+        plotter.Y = self.Y 
+
+        # Create and display the correlation plot
+        return plotter.correlation()
+
 
     def fit(self , l):
         print("start to create the fit")
